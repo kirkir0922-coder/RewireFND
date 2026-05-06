@@ -1,83 +1,142 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rewire | FND Awareness Campaign</title>
-</head>
-<body>
-  <!-- Navbar -->
-  <nav>
-    <div>
-      <p><strong>Rewire</strong></p>
-    </div>
-    <div>
-      <a href="#what-is-fnd">What is FND</a>
-      <a href="#about-rewire">About Rewire</a>
-      <a href="#make-a-change">Make A Change</a>
-      <button type="button">Donate</button>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header>
-    <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?auto=format&fit=crop&w=1800&q=80" alt="Awareness campaign hero image placeholder">
-    <div>
-      <h1>You won't know about FND<br>
-      Until it starts to affect <i>you</i></h1>
-      <button type="button">Learn About FND</button>
-    </div>
-  </header>
-
-  <!-- About / What is FND Section -->
-  <section id="what-is-fnd">
-    <h2>What is FND?</h2>
-    <p>Functional Neurological Disorder (FND) is a condition where the brain and body struggle to send and receive signals effectively, which can lead to symptoms such as seizures, movement difficulties, weakness, and sensory changes. FND is common and treatable, and people living with FND deserve informed, compassionate care.</p>
-  </section>
-
-  <!-- About Rewire Section -->
-  <section id="about-rewire">
-    <h2>About Rewire</h2>
-    <p>Rewire is a modern awareness campaign focused on education, storytelling, and action. By sharing trusted information and lived experiences, Rewire helps communities better understand FND and support those affected.</p>
-  </section>
-
-  <!-- Stories Section -->
-  <section>
-    <h2>Stories of Living with FND</h2>
-    <article>
-      <img src="https://via.placeholder.com/400x220?text=Story+Image" alt="Story image placeholder for Maya">
-      <h3>Lisa,63</h3>
-      <p> “I had never heard of it. Three years in and I only know what it is from the internet.My neurologist didn’t help with education or information.”</p>
-    </article>
-
-    <article>
-      <img src="https://via.placeholder.com/400x220?text=Story+Image" alt="Story image placeholder for Jordan">
-      <h3>Nicki,29</h3>
-      <p>"Since the daily seizures I can suffer with temporary paralysis, loss of vision, excruciating pain, vertigo, and exhaustion. I’m only 29 and have the quality of life of an 80 yr old. 
-People (including health professionals) have never heard of this condition!"</p>
-    </article>
-
-    <article>
-      <img src="https://via.placeholder.com/400x220?text=Story+Image" alt="Story image placeholder for Elena">
-      <h3>Liam,13</h3>
-      <p>"I had no way of explaining what was happening because I had no words. 
-My teenage years were stolen by a condition that took my identity and left me relying on 24-hour care for things I used to take for granted."</p>
-    </article>
-  </section>
-
-  <!-- Make A Change Section -->
-  <section id="make-a-change">
-    <h2>Make A Change</h2>
-    <p>You can make a difference by sharing FND facts, listening to lived experiences, and supporting better access to diagnosis, treatment, and advocacy.</p>
-    <button type="button">Take Action</button>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>© Rewire Campaign</p>
-    <a href="#">Social Media</a>
-    <a href="#">Resources</a>
-    <a href="#">Contact</a>
-  </footer>
-</body>
-</html>
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/index.html b/index.html
+index dc0b83fa11f87f530af2d2008398d198861d97e8..7c5ad5136e2805f7f59b8ddcf0fa9825752de862 100644
+--- a/index.html
++++ b/index.html
+@@ -1,83 +1,84 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Rewire | FND Awareness Campaign</title>
++  <link rel="stylesheet" href="styles.css">
++  
+ </head>
+ <body>
+-  <!-- Navbar -->
+-  <nav>
++  <nav aria-label="Main navigation">
+     <div>
+       <p><strong>Rewire</strong></p>
+     </div>
+     <div>
+       <a href="#what-is-fnd">What is FND</a>
+       <a href="#about-rewire">About Rewire</a>
+       <a href="#make-a-change">Make A Change</a>
+       <button type="button">Donate</button>
+     </div>
+   </nav>
+ 
+-  <!-- Hero Section -->
+-  <header>
+-    <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?auto=format&fit=crop&w=1800&q=80" alt="Awareness campaign hero image placeholder">
+-    <div>
+-      <h1>You won't know about FND<br>
+-      Until it starts to affect <i>you</i></h1>
+-      <button type="button">Learn About FND</button>
++  <header class="hero" aria-labelledby="hero-heading">
++    <ul class="hero__carousel" aria-hidden="true">
++      <li class="hero__slide">
++        <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?auto=format&fit=crop&w=1800&q=80" alt="">
++      </li>
++      <li class="hero__slide">
++        <img src="https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?auto=format&fit=crop&w=1800&q=80" alt="">
++      </li>
++      <li class="hero__slide">
++        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1800&q=80" alt="">
++      </li>
++    </ul>
++
++    <div class="hero__content">
++      <h1 id="hero-heading">You won't know about FND until it starts to affect <em>you</em>.</h1>
++      <p>Functional Neurological Disorder is common, real, and treatable. Early understanding helps people get care faster.</p>
++      <a class="cta-link" href="#what-is-fnd">Learn About FND</a>
+     </div>
+   </header>
+ 
+-  <!-- About / What is FND Section -->
+-  <section id="what-is-fnd">
+-    <h2>What is FND?</h2>
+-    <p>Functional Neurological Disorder (FND) is a condition where the brain and body struggle to send and receive signals effectively, which can lead to symptoms such as seizures, movement difficulties, weakness, and sensory changes. FND is common and treatable, and people living with FND deserve informed, compassionate care.</p>
+-  </section>
+-
+-  <!-- About Rewire Section -->
+-  <section id="about-rewire">
+-    <h2>About Rewire</h2>
+-    <p>Rewire is a modern awareness campaign focused on education, storytelling, and action. By sharing trusted information and lived experiences, Rewire helps communities better understand FND and support those affected.</p>
+-  </section>
+-
+-  <!-- Stories Section -->
+-  <section>
+-    <h2>Stories of Living with FND</h2>
+-    <article>
+-      <img src="https://via.placeholder.com/400x220?text=Story+Image" alt="Story image placeholder for Maya">
+-      <h3>Lisa,63</h3>
+-      <p> “I had never heard of it. Three years in and I only know what it is from the internet.My neurologist didn’t help with education or information.”</p>
+-    </article>
++  <main>
++    <section id="what-is-fnd" aria-labelledby="what-is-fnd-title">
++      <h2 id="what-is-fnd-title">What is FND?</h2>
++      <p>Functional Neurological Disorder (FND) is a condition where the brain and body struggle to send and receive signals effectively, which can lead to symptoms such as seizures, movement difficulties, weakness, and sensory changes. FND is common and treatable, and people living with FND deserve informed, compassionate care.</p>
++    </section>
+ 
+-    <article>
+-      <img src="https://via.placeholder.com/400x220?text=Story+Image" alt="Story image placeholder for Jordan">
+-      <h3>Nicki,29</h3>
+-      <p>"Since the daily seizures I can suffer with temporary paralysis, loss of vision, excruciating pain, vertigo, and exhaustion. I’m only 29 and have the quality of life of an 80 yr old. 
+-People (including health professionals) have never heard of this condition!"</p>
+-    </article>
++    <section id="about-rewire" aria-labelledby="about-rewire-title">
++      <h2 id="about-rewire-title">About Rewire</h2>
++      <p>Rewire is a modern awareness campaign focused on education, storytelling, and action. By sharing trusted information and lived experiences, Rewire helps communities better understand FND and support those affected.</p>
++    </section>
+ 
+-    <article>
+-      <img src="https://via.placeholder.com/400x220?text=Story+Image" alt="Story image placeholder for Elena">
+-      <h3>Liam,13</h3>
+-      <p>"I had no way of explaining what was happening because I had no words. 
+-My teenage years were stolen by a condition that took my identity and left me relying on 24-hour care for things I used to take for granted."</p>
+-    </article>
+-  </section>
++    <section aria-labelledby="stories-title">
++      <h2 id="stories-title">Stories of Living with FND</h2>
++      <article>
++        <h3>Lisa, 63</h3>
++        <p>“I had never heard of it. Three years in and I only know what it is from the internet. My neurologist didn’t help with education or information.”</p>
++      </article>
++      <article>
++        <h3>Nicki, 29</h3>
++        <p>“Since the daily seizures I can suffer with temporary paralysis, loss of vision, excruciating pain, vertigo, and exhaustion. I’m only 29 and have the quality of life of an 80-year-old.”</p>
++      </article>
++      <article>
++        <h3>Liam, 13</h3>
++        <p>“I had no way of explaining what was happening because I had no words. My teenage years were stolen by a condition that took my identity.”</p>
++      </article>
++    </section>
+ 
+-  <!-- Make A Change Section -->
+-  <section id="make-a-change">
+-    <h2>Make A Change</h2>
+-    <p>You can make a difference by sharing FND facts, listening to lived experiences, and supporting better access to diagnosis, treatment, and advocacy.</p>
+-    <button type="button">Take Action</button>
+-  </section>
++    <section id="make-a-change" aria-labelledby="change-title">
++      <h2 id="change-title">Make A Change</h2>
++      <p>You can make a difference by sharing FND facts, listening to lived experiences, and supporting better access to diagnosis, treatment, and advocacy.</p>
++      <button type="button">Take Action</button>
++    </section>
++  </main>
+ 
+-  <!-- Footer -->
+   <footer>
+     <p>© Rewire Campaign</p>
+     <a href="#">Social Media</a>
+     <a href="#">Resources</a>
+     <a href="#">Contact</a>
+   </footer>
+ </body>
+ </html>
+ 
+EOF
+)
