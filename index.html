@@ -1,446 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rewire | Functional Neurological Disorder Awareness</title>
-  <style>
-    /* =========================
-       Base / Theme
-    ========================== */
-    :root {
-      --bg-dark: #000000;
-      --bg-light: #ffffff;
-      --text-dark: #111111;
-      --text-light: #f8f8f8;
-      --muted: #5f5f5f;
-      --accent-red: #e63946;
-      --accent-orange: #ff8c42;
-      --accent-blue: #1d4ed8;
-      --max-width: 1120px;
-      --radius: 14px;
-      --shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html,
-    body {
-      width: 100%;
-      overflow-x: hidden;
-    }
-
-    body {
-      font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-      color: var(--text-dark);
-      background: var(--bg-light);
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(100% - 2rem, var(--max-width));
-      margin-inline: auto;
-    }
-
-    /* =========================
-       Navbar
-    ========================== */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: var(--bg-dark);
-      color: var(--text-light);
-      border-bottom: 2px solid var(--accent-red);
-    }
-
-    .navbar-inner {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .logo {
-      font-size: 1.3rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--bg-light);
-    }
-
-    .logo span {
-      color: var(--accent-orange);
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1.25rem;
-      align-items: center;
-    }
-
-    .nav-links a {
-      font-weight: 600;
-      font-size: 0.95rem;
-      opacity: 0.9;
-      transition: opacity 0.2s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
-      opacity: 1;
-      color: var(--accent-blue);
-    }
-
-    /* =========================
-       Hero Section
-    ========================== */
-    .hero {
-      min-height: 78vh;
-      display: grid;
-      align-items: center;
-      position: relative;
-      isolation: isolate;
-      background:
-        linear-gradient(90deg, rgba(0, 0, 0, 0.74) 0%, rgba(0, 0, 0, 0.6) 37%, rgba(0, 0, 0, 0.35) 60%, rgba(0, 0, 0, 0.18) 100%),
-        url('https://images.unsplash.com/photo-1519834785169-98be25ec3f84?auto=format&fit=crop&w=1800&q=80') center / cover no-repeat;
-      color: var(--text-light);
-    }
-
-    .hero-content {
-      max-width: 620px;
-      padding-block: 4rem;
-    }
-
-    .hero-kicker {
-      display: inline-block;
-      margin-bottom: 1rem;
-      font-size: 0.83rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-weight: 700;
-      color: var(--accent-orange);
-    }
-
-    .hero h1 {
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      line-height: 1.12;
-      margin-bottom: 1rem;
-      font-weight: 800;
-    }
-
-    .hero p {
-      max-width: 54ch;
-      margin-bottom: 1.75rem;
-      color: #e8e8e8;
-      font-size: clamp(1rem, 2.5vw, 1.1rem);
-    }
-
-    .cta-btn {
-      display: inline-block;
-      background: linear-gradient(120deg, var(--accent-red), var(--accent-orange));
-      color: #fff;
-      border: none;
-      border-radius: 999px;
-      padding: 0.9rem 1.4rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 10px 20px rgba(230, 57, 70, 0.35);
-    }
-
-    .cta-btn:hover,
-    .cta-btn:focus-visible {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 28px rgba(230, 57, 70, 0.45);
-    }
-
-    /* =========================
-       About Section
-    ========================== */
-    .about {
-      padding: 4.5rem 0 3.5rem;
-      background: #f9f9f9;
-      border-top: 4px solid var(--accent-blue);
-    }
-
-    .section-title {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      margin-bottom: 0.8rem;
-      color: var(--text-dark);
-    }
-
-    .about p {
-      max-width: 75ch;
-      color: #242424;
-      font-size: 1.02rem;
-    }
-
-    /* =========================
-       Stories Section
-    ========================== */
-    .stories {
-      padding: 3.8rem 0 4.5rem;
-    }
-
-    .stories-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 1rem;
-      margin-bottom: 1.6rem;
-    }
-
-    .stories-subtext {
-      color: var(--muted);
-      max-width: 56ch;
-      font-size: 0.96rem;
-    }
-
-    .cards {
-      display: grid;
-      gap: 1.2rem;
-      grid-template-columns: 1fr;
-    }
-
-    .card {
-      background: #fff;
-      border: 1px solid #ececec;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.13);
-    }
-
-    .card-media {
-      height: 185px;
-      background: linear-gradient(130deg, #e6e6e6, #cccccc);
-      display: grid;
-      place-items: center;
-      color: #444;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-
-    .card-body {
-      padding: 1rem 1rem 1.2rem;
-    }
-
-    .card h3 {
-      margin-bottom: 0.35rem;
-      color: var(--accent-blue);
-      font-size: 1.15rem;
-    }
-
-    .card p {
-      color: #2e2e2e;
-      font-size: 0.95rem;
-    }
-
-    /* =========================
-       Footer
-    ========================== */
-    .footer {
-      background: #0a0a0a;
-      color: #ededed;
-      padding: 1.4rem 0;
-      border-top: 2px solid var(--accent-orange);
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1rem;
-      list-style: none;
-      font-size: 0.93rem;
-    }
-
-    .footer-links a:hover,
-    .footer-links a:focus-visible {
-      color: var(--accent-orange);
-    }
-
-    /* =========================
-       Responsive Breakpoints
-    ========================== */
-    @media (min-width: 740px) {
-      .cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (min-width: 980px) {
-      .cards {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .navbar-inner {
-        min-height: 66px;
-      }
-
-      .nav-links {
-        gap: 0.75rem;
-      }
-
-      .nav-links a {
-        font-size: 0.86rem;
-      }
-
-      .stories-head {
-        flex-direction: column;
-        align-items: start;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rewire | FND Awareness Campaign</title>
 </head>
 <body>
-  <!-- =========================
-       Navbar
-  ========================== -->
-  <nav class="navbar">
-    <div class="container navbar-inner">
-      <a href="#" class="logo" aria-label="Rewire home">Re<span>wire</span></a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#stories">Stories</a></li>
-        <li><a href="#footer">Resources</a></li>
-      </ul>
+  <!-- Navbar -->
+  <nav>
+    <div>
+      <p><strong>Rewire</strong></p>
+    </div>
+    <div>
+      <a href="#what-is-fnd">What is FND</a>
+      <a href="#about-rewire">About Rewire</a>
+      <a href="#make-a-change">Make A Change</a>
+      <button type="button">Donate</button>
     </div>
   </nav>
 
-  <!-- =========================
-       Hero Section
-  ========================== -->
-  <header class="hero" id="hero">
-    <div class="container hero-content">
-      <span class="hero-kicker">Functional Neurological Disorder Awareness</span>
-      <h1>Rewire the narrative around FND.</h1>
-      <p>
-        Functional Neurological Disorder is real, complex, and often misunderstood. Through education,
-        empathy, and lived experiences, we can build awareness and change outcomes together.
-      </p>
-      <button class="cta-btn" type="button" id="ctaButton">Join the Movement</button>
+  <!-- Hero Section -->
+  <header>
+    <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?auto=format&fit=crop&w=1800&q=80" alt="Awareness campaign hero image placeholder">
+    <div>
+      <h1>You won't know about FND<br>
+      Until it starts to affect <i>you</i></h1>
+      <button type="button">Learn About FND</button>
     </div>
   </header>
 
-  <!-- =========================
-       About Section
-  ========================== -->
-  <section class="about" id="about">
-    <div class="container">
-      <h2 class="section-title">What is FND?</h2>
-      <p>
-        Functional Neurological Disorder (FND) is a condition where the nervous system has difficulty sending and
-        receiving signals properly, leading to symptoms such as movement issues, seizures, weakness, and sensory
-        changes. FND is common, treatable, and deserving of informed, compassionate care.
-      </p>
-    </div>
+  <!-- About / What is FND Section -->
+  <section id="what-is-fnd">
+    <h2>What is FND?</h2>
+    <p>Functional Neurological Disorder (FND) is a condition where the brain and body struggle to send and receive signals effectively, which can lead to symptoms such as seizures, movement difficulties, weakness, and sensory changes. FND is common and treatable, and people living with FND deserve informed, compassionate care.</p>
   </section>
 
-  <!-- =========================
-       Stories Section
-  ========================== -->
-  <section class="stories" id="stories">
-    <div class="container">
-      <div class="stories-head">
-        <h2 class="section-title">Stories of Strength</h2>
-        <p class="stories-subtext">
-          Real people. Real experiences. These snapshots reflect the resilience and daily reality of people living
-          with FND.
-        </p>
-      </div>
-
-      <div class="cards">
-        <article class="card">
-          <div class="card-media" role="img" aria-label="Image placeholder for Maya">Image Placeholder</div>
-          <div class="card-body">
-            <h3>Maya</h3>
-            <p>
-              “When my symptoms first appeared, I felt invisible. Learning about FND helped me find language,
-              support, and a path toward better days.”
-            </p>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-media" role="img" aria-label="Image placeholder for Jordan">Image Placeholder</div>
-          <div class="card-body">
-            <h3>Jordan</h3>
-            <p>
-              “My journey with FND changed my life, but it also showed me the power of community. Being heard made
-              healing possible.”
-            </p>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-media" role="img" aria-label="Image placeholder for Elena">Image Placeholder</div>
-          <div class="card-body">
-            <h3>Elena</h3>
-            <p>
-              “Progress is not linear, but every small step matters. Awareness reduces stigma and helps people like
-              me access the right care sooner.”
-            </p>
-          </div>
-        </article>
-      </div>
-    </div>
+  <!-- About Rewire Section -->
+  <section id="about-rewire">
+    <h2>About Rewire</h2>
+    <p>Rewire is a modern awareness campaign focused on education, storytelling, and action. By sharing trusted information and lived experiences, Rewire helps communities better understand FND and support those affected.</p>
   </section>
 
-  <!-- =========================
-       Footer
-  ========================== -->
-  <footer class="footer" id="footer">
-    <div class="container footer-inner">
-      <p>&copy; <span id="year"></span> Rewire Campaign</p>
-      <ul class="footer-links">
-        <li><a href="#" aria-label="Visit social media placeholder">Social Media</a></li>
-        <li><a href="#" aria-label="Visit resources placeholder">Resources</a></li>
-        <li><a href="#" aria-label="Visit contact placeholder">Contact</a></li>
-      </ul>
-    </div>
+  <!-- Stories Section -->
+  <section>
+    <h2>Stories of Living with FND</h2>
+    <article>
+      <img src="https://via.placeholder.com/400x220?text=Story+Image" alt="Story image placeholder for Maya">
+      <h3>Lisa,63</h3>
+      <p> “I had never heard of it. Three years in and I only know what it is from the internet.My neurologist didn’t help with education or information.”</p>
+    </article>
+
+    <article>
+      <img src="https://via.placeholder.com/400x220?text=Story+Image" alt="Story image placeholder for Jordan">
+      <h3>Nicki,29</h3>
+      <p>"Since the daily seizures I can suffer with temporary paralysis, loss of vision, excruciating pain, vertigo, and exhaustion. I’m only 29 and have the quality of life of an 80 yr old. 
+People (including health professionals) have never heard of this condition!"</p>
+    </article>
+
+    <article>
+      <img src="https://via.placeholder.com/400x220?text=Story+Image" alt="Story image placeholder for Elena">
+      <h3>Liam,13</h3>
+      <p>"I had no way of explaining what was happening because I had no words. 
+My teenage years were stolen by a condition that took my identity and left me relying on 24-hour care for things I used to take for granted."</p>
+    </article>
+  </section>
+
+  <!-- Make A Change Section -->
+  <section id="make-a-change">
+    <h2>Make A Change</h2>
+    <p>You can make a difference by sharing FND facts, listening to lived experiences, and supporting better access to diagnosis, treatment, and advocacy.</p>
+    <button type="button">Take Action</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© Rewire Campaign</p>
+    <a href="#">Social Media</a>
+    <a href="#">Resources</a>
+    <a href="#">Contact</a>
   </footer>
-
-  <script>
-    // Minimal JS: current year + CTA scroll behavior
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    document.getElementById('ctaButton').addEventListener('click', function () {
-      document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
-    });
-  </script>
 </body>
 </html>
